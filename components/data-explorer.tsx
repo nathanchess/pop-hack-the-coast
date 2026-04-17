@@ -87,18 +87,18 @@ export default function DataExplorer() {
     setGlobalFilter('');
     setTableKey(prev => prev + 1);
     
-    Papa.parse(selectedDataset.file, {
+    Papa.parse<Record<string, any>>(selectedDataset.file, {
       download: true,
       header: true,
       complete: (results) => {
-        const csvData = results.data.filter((row: any) => {
+        const csvData = results.data.filter((row) => {
           return Object.values(row).some((val) => val !== '');
         });
         
         setData(csvData);
 
         // Create columns from CSV headers
-        if (csvData.length > 0) {
+        if (csvData.length > 0 && csvData[0]) {
           const headers = Object.keys(csvData[0]);
           const cols: ColumnDef<any>[] = headers.map((header) => ({
             id: `${selectedDataset.id}-${header}`,
