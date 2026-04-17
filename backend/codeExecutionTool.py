@@ -49,18 +49,12 @@ def code_execution_tool(state: AgentState):
         print(f"Execution Error: {e}")
         # Even if it fails, we want to save the notebook to see the error output
 
-    # 4. Save the updated notebook (now contains the output/logs)
-    abs_nb_path = Path(nb_path).absolute()
-    with open(nb_path, 'w', encoding='utf-8') as f:
-        nbformat.write(nb, f)
-    print(f"--- NOTEBOOK SAVED TO: {abs_nb_path} ---")
-
-    # 6. Synchronize the state using our previous function
-    # This pulls the cell outputs back into the LangGraph state
+    # 4. Synchronize the state using our previous function (Passing nb object to capture errors)
+    # This pulls the cell outputs back into the LangGraph state before we delete the cell
     current_vars = state.get("internal_variables", {})
-    updated_notebook_state = update_state(nb_path, current_vars)
+    updated_notebook_state = update_state(str(nb_path), current_vars, nb=nb)
 
-    # 7. Check for errors in the last execution to give better feedback to the planner
+    # 5. Check for errors in the last execution to give better feedback to the planner
     error_detected = False
     if updated_notebook_state.get("notebook_cells"):
         last_cell = updated_notebook_state["notebook_cells"][-1]
@@ -69,7 +63,23 @@ def code_execution_tool(state: AgentState):
                 error_detected = True
                 break
 
-    feedback = "Code execution failed with a Python error. Please review the notebook activity and fix the code." if error_detected else "Code executed successfully. Check notebook_cells for output."
+    # 6. Auto-Cleanup: Remove any cells that produced an error from the notebook file
+    nb.cells = [
+        cell for cell in nb.cells 
+        if not any(out.get("output_type") == "error" for out in cell.get("outputs", []))
+    ]
+
+    # 7. Save the notebook (now contains the output/logs of successful cells only)
+    abs_nb_path = Path(nb_path).absolute()
+    with open(nb_path, 'w', encoding='utf-8') as f:
+        nbformat.write(nb, f)
+    
+    if error_detected:
+        print(f"--- FAILURE DETECTED. Erroneous cell removed. Notebook saved to: {abs_nb_path} ---")
+    else:
+        print(f"--- SUCCESS. Notebook saved to: {abs_nb_path} ---")
+
+    feedback = "Code execution failed with a Python error. Erroneous cell has been removed from the notebook file. Please review the notebook activity and fix the code." if error_detected else "Code executed successfully. Check notebook_cells for output."
 
     return {
         **state,

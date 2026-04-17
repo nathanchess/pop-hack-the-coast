@@ -32,6 +32,8 @@ def make_main_ai_planner(llm_with_tools):
         RULES:
         1. If the goal is not yet completed, you MUST use either 'load' (to get data) or 'write' (to perform analysis).
         2. DO NOT provide Python code in your text response. ONLY use the 'write' tool.
+           - Use the 'goal' field for a high-level description.
+           - Use the 'instructions' field to pass EXACT column names, logic, or filters you want the Writer to use.
         3. A "summary" is not just a list of columns. You MUST use 'write' to perform actual calculations (e.g., sums, averages) before ending.
         4. When you have completed the goal and provided a thorough conversational answer, use 'end'.
         
@@ -41,7 +43,7 @@ def make_main_ai_planner(llm_with_tools):
 
         Context:
         - Current Variables: {state['internal_variables']}
-        - Files available: POP_SalesTransactionHistory.csv, POP_InventorySnapshot.csv
+        - Files available: POP_ImportShipmentStatus.csv, POP_ItemSpecMaster.csv, POP_AssemblyOrders.csv, POP_InternalTransferHistory.csv, POP_PurchaseOrderHistory.csv, POP_ChargeBack_Deductions_Penalties_Freight.csv, POP_InternalTransferRequests.csv, POP_SalesTransactionHistory.csv, POP_DataDictionary.csv, POP_InventorySnapshot.csv
         
         Recent Execution Output:
         {recent_outputs if recent_outputs else "No output yet."}

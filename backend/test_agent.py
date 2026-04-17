@@ -5,9 +5,28 @@ def test_summary_request():
     # 1. Start with a state where data is already "loaded" 
     # This simulates the agent having already run a load command.
     initial_state = {
+#         "messages": [
+#             HumanMessage(content="""POP's sales data tells an incomplete story, and the gaps lead to bad decisions.
+# When a customer orders 1,000 units and POP only has 500 available, the customer service
+# team contacts the buyer to negotiate the order down. POP ships what it has, records the sale as
+# 500, and the other 500 units of demand disappear entirely. The system does not capture lost
+# sales. There is a backorder function but it is incompatible with our workflow and customer
+# requirements. Over time, this understates true demand and reinforces the cycle: lower recorded
+# sales lead to smaller reorders, more stockouts, and further suppressed demand signal.
+# The problem compounds when you look at how sales data is presented. A buyer sees blended
+# revenue by SKU but can't distinguish full-price sales from markdown volume. A product showing
+# $50,000 in monthly revenue looks strong, but half may have been sold at a steep discount to
+# flush short-dated inventory. The real healthy demand signal is $25,000. Without that distinction,
+# a buyer may reorder aggressively on a product that is actually underperforming. Developer a complete picture of
+# demand and translate it into better ordering decisions. This could include: surfacing
+# lost/suppressed demand, separating healthy demand from markdown volume, forecasting by
+# channel and SKU, alerting buyers when reorder points are approaching, or generating draft
+# purchase order recommendations. The goal is better signal and smarter action. give a list of items that are currently hot in demand
+# """)
+        # ],
         "messages": [
-            HumanMessage(content="Give me a brief summary of my sales data")
-        ],
+            HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary. Tell me what this reflects about my customers
+""")],
         "notebook_cells": [],
         # Telling the agent it has a dataframe makes it more likely to summarize
         "internal_variables": {"df_sales": "DataFrame"}, 

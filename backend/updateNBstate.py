@@ -1,14 +1,15 @@
 import nbformat
 
-def update_state(NB_filename: str, current_variables: dict):
+def update_state(NB_filename: str, current_variables: dict, nb=None):
     """
-    Reads a Jupyter Notebook file and returns a dictionary 
-    compatible with the LangGraph AgentState.
+    Reads a Jupyter Notebook file (or uses the provided nb object) 
+    and returns a dictionary compatible with the LangGraph AgentState.
     """
     try:
-        # 1. Load the notebook file
-        with open(NB_filename, 'r', encoding='utf-8') as f:
-            nb = nbformat.read(f, as_version=4)
+        # 1. Load the notebook file if nb is not provided
+        if nb is None:
+            with open(NB_filename, 'r', encoding='utf-8') as f:
+                nb = nbformat.read(f, as_version=4)
 
         # 2. Extract cells into a list of dictionaries
         # This populates the 'notebook_cells' key in your state

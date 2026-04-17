@@ -19,8 +19,8 @@ def load(filename: str):
     pass
 
 @tool
-def write(goal: str):
-    """Generates Python code for analysis or plotting. Use this for calculations or visualizations."""
+def write(goal: str, instructions: str = ""):
+    """Generates Python code for analysis or plotting. Use goal for the high-level task and instructions for specific column names or technical logic."""
     pass
 
 

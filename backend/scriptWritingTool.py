@@ -11,12 +11,20 @@ def script_writing_tool(state: AgentState):
 
     # 1. Access the model (passed in through your state or globally from model.py)
     # Note: Using the model here allows us to 'refine' the planner's high-level goal into code.
-    from model import model 
+    from model import model
+    
+    # 2. Extract specific instructions from the planner's tool call
+    last_message = state["messages"][-1]
+    tool_args = last_message.tool_calls[0]["args"] if hasattr(last_message, "tool_calls") and last_message.tool_calls else {}
+    goal = tool_args.get("goal", "Perform analysis")
+    instructions = tool_args.get("instructions", "Use your best judgment.")
 
-    # 2. Construct a prompt for code generation
-    # We provide the AI with the history so it knows what was just planned.
+    # 3. Construct a prompt for code generation
     code_gen_prompt = f"""You are an expert Python Data Scientist.
     
+    PLANNER'S GOAL: {goal}
+    TECHNICAL INSTRUCTIONS: {instructions}
+
     IMPORTANT: You MUST use the exact variable names listed in 'Current Variables in Memory'.
     Current Variables in Memory: {state['internal_variables']}
     
