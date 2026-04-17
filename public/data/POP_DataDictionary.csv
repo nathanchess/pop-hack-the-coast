@@ -1,0 +1,85 @@
+Data File,Data Field,Notes
+PO History,Location Code,PO recieved site
+PO History,Receipt Date,Po received date
+PO History,PO Number,
+PO History,POP Receipt Number,Finance receipt #
+PO History,Item Number,
+PO History,Item Description,
+PO History,QTY Shipped,
+PO History,QTY Invoiced,
+PO History,Unit Cost,United cost with QTY invoiced = landed cost
+PO History,Extended Cost,
+PO History,Vendor ID,Supplier
+Supplier Master,Brand,
+Supplier Master,Product Line,
+Supplier Master,Category,
+Supplier Master,Abbr. Legend (for WH),
+Supplier Master,Vendor ID,
+Supplier Master,State,
+Supplier Master,Zip,
+Supplier Master,Vendor Status,
+Supplier Master,Country,
+Supplier Master,Country 2,
+Supplier Master,Seasonality,Whether product is considered seasonal
+Supplier Master,# of SKUs (active),
+Supplier Master,Notes,
+Supplier Master,A&P (Y/N),Whether supplier provides Advertising & Promotional support funds/products
+Supplier Master,Shipment Terms,
+Supplier Master,Payment Terms,
+Supplier Master,Payment Currency ,
+Item Spec Master,Item Number,
+Item Spec Master,Description,
+Item Spec Master,Case Pack,Case configuration
+Item Spec Master,unit dimension (L*W*H) (in),
+Item Spec Master,inner case dimension (L*W*H) (in),
+Item Spec Master,master case dimension (L*W*H) (in),
+Item Spec Master,Case/ Pallet,# of Cases per Pallet
+Item Spec Master,UPC#,
+Item Spec Master,Mstr Ctn UPC#,
+Item Spec Master,Country of Origin,
+Item Spec Master,Shelf Life (Months),
+Item Spec Master,Maufactuer/ CoPacker,
+Item Spec Master,Lead Time,Time from Order to Delivery
+Item Spec Master,MOQ,Minimum Order Quantity
+Item Spec Master,Allergens,
+Assembly ,Document Date,Date assembly issued
+Assembly ,Document Number,
+Assembly ,Document Type,
+Assembly ,Item Number,
+Assembly ,U Of M,unit of measure
+Assembly ,TRX QTY,Assembled QTY
+Assembly ,Unit Cost,Cost of Goods
+Assembly ,Extended Cost,
+Assembly ,TRX Location,Assembly location 
+Assembly ,Document Status,
+Sales Transaction History,LOCNCODE,Shipping DC Location
+Sales Transaction History,SLPRSNID,Sales Person - ANONYMIZED
+Sales Transaction History,CUSTNMBR,Internal Customer ID
+Sales Transaction History,CUSTNAME,Customer Name - ANONYMIZED
+Sales Transaction History,CITY,
+Sales Transaction History,STATE,
+Sales Transaction History,ZIPCODE,
+Sales Transaction History,SOP TYPE,Invoice vs Return
+Sales Transaction History,SOPNUMBE,
+Sales Transaction History,DOCDATE,Document Issued Date
+Sales Transaction History,ITEMNMBR,Item Number
+Sales Transaction History,ITEMDESC,Item Description
+Sales Transaction History,QUANTITY,Units Shipped
+Sales Transaction History,UOFM,Unit of Measure
+Sales Transaction History,QTYBSUOM,Units of Sellable Goods
+Sales Transaction History,XTNDPRCE,Wholesale Price
+Sales Transaction History,EXTDCOST,Cost of Goods
+Sales Transaction History,Customer Type,Sub Account Type
+Sales Transaction History,Product Type,Sub Product Type
+Transfer History,Document Number,Transfer ID
+Transfer History,Document Date,
+Transfer History,Document Type,
+Transfer History,Item Number,
+Transfer History,Item Description,
+Transfer History,U Of M,Unit of Measure
+Transfer History,TRX QTY,Transferred Quantity
+Transfer History,Unit Cost,Cost of Goods
+Transfer History,Extended Cost,Value of Transferred Goods
+Transfer History,TRX Location,Transfer Shipping Location
+Transfer History,Transfer To Location,Transfer Receiving Location
+Transfer History,Document Status,

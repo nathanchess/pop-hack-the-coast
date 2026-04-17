@@ -1,0 +1,71 @@
+Item Number,Description,Case Pack,unit dimension (L*W*H) (in),inner case dimension (L*W*H) (in),master case dimension (L*W*H) (in),Case/ Pallet,UPC#,Mstr Ctn UPC#,Country of Origin,Shelf Life (Months),Maufactuer/ CoPacker,Lead Time,MOQ,Allergens
+A-61220,AM GSG RT Tea 20 Bags,BOX40,10.91 x 6.61 x 1.46,,27 x 15 1/2 x 11,24,039278612202,10039278612209,USA,60 months,ST/ QT,,,N/A
+A-61243,AM GSG RT Tea 40 Bags,BOX20,10.91 x 6.70x 2.92,,27 x 15 1/2 x 11,24,039278612431,10039278612438,USA,60 months,ST/ QT,,,N/A
+A-61260N,AM GSG RT Tea 60 Bags (15/cs),BOX15,10.23 x 8.11 x 2.76,,27 x 15 1/2 x 11,24,039278612608,10039278612605,USA,60 months,ST/ QT,,,N/A
+A-61280,Am GSG Rt Tea 80 Bags (US Costco),,,,,,039278612806,,USA,60 months,ST,,,N/A
+A-61012,Wild AM GSG Instant Tea 3gx10x8,BOX12,10.8 x 2.5 x 6.6,,21 x 12 x 12,,039278610123,,China,4 years,POP ,3 months,,
+AC-B16BK,AM GSG Root (Mixed) 1 lb Bag,24,20,,20x18x12,16,039278694116,,USA,5 years,POP ,,,
+AC-B4BK,AM GSG Root (Mixed) 4 oz Bag,60,8.62 x 6.77,,20x18x12,16,039278694413,,USA,5 years,POP ,,,
+AC-B8BK,AM GSG Root (Mixed) 8 oz Bag,42,10x8,,20x18x12,16,39278694819,,USA,5 years,POP ,,,
+AC-B3SLJ,AM GSG Slices 3 oz Bag-Jumbo,12,8.62 x 6.77,,,,39278690644,,USA,5 years,POP ,,,
+AC-B6SLJ,AM GSG Slices 6 oz Bag-Jumbo,12,9.84 x 8.07,,,,039278690637,,USA,5 years,POP ,,,
+AC-B9SL,POP AM GSG Root Slices 9 oz,60,16,,20x16x12,,039278694000,,USA,5 years,POP ,,,
+A-61117,AM GSG Candy 1 lb / Bag,Bag 22,"8.66” x 2.5” x 10.63”
+",,"18.50"" × 14.96"" × 10.55""",45,039278611175,10039278611172,China,24 months,GL,3-4 months,,
+A-61150,AM GSG Candy 6 oz Bag,Bag 30,"6.25” x 2.5” x 9.33”
+",,"18.11"" × 8.66"" × 11.81""",60,039278611502,10039278611509,China,24 months,GL,3-4 months,,
+F-12122,Ferrero Rocher 12 Pcs,PACK12,6.46 x1.54x4.96,"8.75x6.88 x 5.13
+",13.98x5.43x9.17,96,009800000715,,Poland,6 Months,Ferrero USA,3 weeks,"2,000LB"," tree nuts (hazelnuts), wheat, milk, soy"
+F-12402,Ferrero Rocher 24 Pcs Diamond,BOX6,8.5x1.54x8.4,"10.00x8.75x8.50
+",10.24x9.06x9.06,90,009800124015,,Poland,6 Months,Ferrero USA,3 weeks,"2,000LB"," tree nuts (hazelnuts), wheat, milk, soy"
+F-20141,Ferrero Coll. 24 pcs (w/Hazelnut)#20148,BOX6,8.5x1.54x8.5,"10.00x8.75x8.50
+",10.43x9.25x8.86,72,009800200511,,Poland,5 Months,Ferrero USA,3 weeks,"2,000LB"," tree nuts (hazelnuts), wheat, milk, soy"
+F-12998,Ferrero Rocher 48's Flat Gift Box,16 Boxes,11.25x1.56x8.45,23.98 x 12.48 x 8.98,47.99x40x58.19,36,009800120499,,Poland,6 Months,Ferrero USA,3 weeks,"2,000LB"," tree nuts (hazelnuts), wheat, milk, soy"
+F-12418,Ferrero 24 Pcs Floorstand (48),CASE48,8.5x1.54x8.4,,23.11x15.51x43.78,5,009800124015,10009800124180,Poland,6 Months,Ferrero USA,3 weeks,"2,000LB"," tree nuts (hazelnuts), wheat, milk, soy"
+F-00372,Loacker GP Bisc Noisette Choc 3.53oz,BOX12,9.65 x 1.21 x 2.84,,10 x 7.8 x 5.91,126,076580003724,076580141150,Italy,13,Loacker,3-4mths,Ocean container size,"Contains milk, hazelnuts,coconut, wheat and soy. May contain almonds,peanuts, and sesame"
+F-00373,Loacker GP White Coconut 3.53oz,BOX12,9.65 x 1.21 x 2.84,,10 x 7.8 x 5.91,126,076580180838,,Italy,13,Loacker,3-4mths,Ocean container size,"Contains milk, hazelnuts,coconut, wheat and soy. May contain almonds,peanuts, and sesame"
+F-00375,Loacker GP Bisc Cappuc Choc 3.53oz,BOX12,9.65 x 1.21 x 2.84,,10 x 7.8 x 5.91,126,076580003755,,Italy,13,Loacker,3-4mths,Ocean container size,"Contains milk, hazelnuts,coconut, wheat and soy. May contain almonds,peanuts, and sesame"
+F-00376,Loacker GP Bisc Coconut Choc 3.53oz,BOX12,9.65 x 1.21 x 2.84,,10 x 7.8 x 5.91,126,076580003762,,Italy,13,Loacker,3-4mths,Ocean container size,"Contains milk, hazelnuts,coconut, wheat and soy. May contain almonds,peanuts, and sesame"
+F-00377,Loacker GP Bisc Orange Choc 3.53oz,BOX12,9.65 x 1.21 x 2.84,,10 x 7.8 x 5.91,126,076580003779,,Italy,13,Loacker,3-4mths,Ocean container size,"Contains milk, hazelnuts,coconut, wheat and soy. May contain almonds,peanuts, and sesame"
+F-00378,Loacker GP Dark Hazelnut 3.53oz,BOX12,9.65 x 1.21 x 2.84,,10 x 7.8 x 5.91,126,076580148036,,Italy,13,Loacker,3-4mths,Ocean container size,"Contains milk, hazelnuts,coconut, wheat and soy. May contain almonds,peanuts, and sesame"
+,,,,,,,,,,,,,,
+F-04001,POP Ginger Chews Original 1 lb Bulk,BAG12,11 x 8 x 1.5,,15.7 x 10.4 x 9.8,70cs,039278040012,10039278040019,Indonesia,24 months,PTA,3 months,40HQ,"Peanuts, Coconut"
+F-04070,POP Ginger Chews Original 8 oz,BAG8,9.5 x 7 x 3,,13.5 x 10.5 x10,112cs,039278040708,10039278040705,Indonesia,24 months,PTA,3 months,40HQ,"Peanuts, Coconut"
+F-04071,POP Ginger Chews Lemon 8 oz,BAG8,9.5 x 7 x 3,,13.5 x 10.5 x10,112cs,039278040715,10039278040712,Indonesia,24 months,PTA,3 months,40HQ,"Peanuts, Coconut"
+F-04073,POP Ginger Chews Mango 8 oz,BAG8,9.5 x 7 x 3,,13.5 x 10.5 x10,112cs,039278040739,10039278040736,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04074,POP Ginger Chews Lychee 8 oz,BAG8,9.5 x 7 x 3,,13.5 x 10.5 x10,112cs,039278040746,10039278040743,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Lychee"
+F-04075,POP Ginger Chews Blood Orange 8 oz,BAG8,9.5 x 7 x 3,,13.5 x 10.5 x10,112cs,039278040753,10039278040750,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04076,POP Ginger Chews Assorted 8 oz,BAG8,9.5 x 7 x 3,,13.5 x 10.5 x10,112cs,039278040760,10039278040767,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Lychee"
+F-04111,POP Ginger Chews Original 4 oz (12ct/cs),EA12,7.65 x 5.5 x 2.25,,12.4 x 5.6 x 7.1,240cs,039278040135,10039278041115,Indonesia,24 months,PTA,3 months,40HQ,"Peanuts, Coconut"
+F-04112,POP Ginger Chews Lemon 4 oz (12ct/cs),EA12,7.65 x 5.5 x 2.25,,12.4 x 5.6 x 7.1,240cs,039278040265,10039278041122,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04114,POP Ginger Chews Mango 4 oz (12ct/cs),EA12,7.65 x 5.5 x 2.25,,12.4 x 5.6 x 7.1,240cs,039278040579,10039278041146,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04117,POP Ginger Chews Blood Orange 4 oz (12ct/cs),EA12,7.65 x 5.5 x 2.25,,12.4 x 5.6 x 7.1,240cs,039278041170,10039278041177,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04118,POP Ginger Chews Pineapple Coconut 4 oz (12ct/cs),EA12,7.65 x 5.5 x 2.25,,12.4 x 5.6 x 7.1,240cs,039278041187,10039278041184,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04130,POP Ginger Chews Plus+ Original 3 oz,EA6/6,7 x 5.12x 2.75,6.4 x 5.35x 10.2,16.3 x 10.4 x 13,50cs,039278041309,20039278041303,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04131,POP Ginger Chews Plus+ Lemon 3 oz,EA6/6,7 x 5.12x 2.75,6.4 x 5.35 x 10.2,16.3 x 10.4 x 13,50cs,039278041316,20039278041310,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04211,POP Ginger Chews Original 2 oz,EA12/6,6.75x 4.13x1.75,6.3x 4.13x4.72,12.8 x 9.6 x 12.8,70cs,039278042115,20039278042119,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04220,POP Ginger Chews Original 2 oz (24ct/cs),CASE,6.75x 4.13x1.75,6.3x 4.13x4.72,10x9x6.5,,039278042115,20039278042201,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+F-04221,POP Ginger Chews Lemon 2 oz (24ct/cs),CASE,6.75x 4.13x1.75,6.3x 4.13x4.72,10x9x6.6,,039278042122,20039278042218,Indonesia,24 months,SNA,3 months,40HQ,"Peanuts, Coconut"
+D-04011,POP In Ginger Honey Cytl 18gx30,BAG30,12.5x9.75x3.5,,20.1x15x15,25 cs,0 39278040111,10039278040118,China,36 months ,HN,3 months,300 CASES,NO
+D-04032,POP In Ginger H Cytl w/Turmeric 10ct(6x6),BOX6/6,5.13x3.13x3.75,10x8x6,17.12x10.55x19.09,36 cs,0 39278040326,20039278040320,China,36 months ,HN,3 months,100 CASES,NO
+D-04033,POP In Ginger H Cytl w/Turmeric 18gx25,BAG30,12.5x9.75x3.5,,20.1x15x15,25 cs,0 39278040333,10039278040330,China,36 months ,HN,3 months,300 CASES,NO
+D-04037,POP Ginger H Cytl Lemon 10ct(6x6),BOX6/6,5.13x3.13x3.75,10x8x6,17.12x10.55x19.09,36 cs,0 39278040371,20039278040375,China,36 months ,HN,3 months,100 CASES,NO
+D-04043,POP In Ginger H Cytl w/Lemon 18gx30,BAG30,12.5x9.75x3.5,,20.1x15x15,25 cs,0 39278040432,10039278040439,China,36 months ,HN,3 months,300 CASES,NO
+D-04061,POP Ginger Honey Cytl Original 10ct (6x6),BOX6/6,5.13x3.13x3.75,10x8x6,17.12x10.55x19.09,36 cs,0 39278040104,20039278040610,China,36 months ,HN,3 months,100 CASES,NO
+J-63004,Mazola Corn Oil 40 oz,12 Bottles,11 x 4 x 2.25,,10.94 x 13.13 x 11.25,36,761720987490,,USA,1.5yrs,ACH,3~4wks,Truck load size,corn oil
+J-63006,Mazola Corn Oil 128 oz (1 gal),6 Bottles,6.25 x 11 x 3.25,,13.63 x 15.88 x 12,36,761720058206,,USA,1.5yrs,ACH,3~4wks,Truck load size,corn oil
+J-72402,Totole Chicken Bouillon 2.2 lbs,CAN12,,,21.3 x 15.7 x 7.7 ,60,6922130101461,788051218383,China,2 Yrs,TKN,1-2 weeks,4 pallets,"Sesame Oil, soy"
+T-22010,Tiger Balm Ointment Extra Strength 18g,72,3.25 x 2.75 x 4.75,,13 x 11 x 7.25,72,039278220100,10039278220107,China,4 years,HPH,2.5,2314 dz,
+T-31510,Tiger Balm Ointment Ultra Strength 18g,72,3.25 x 2.75 x 4.75,,13 x 11 x 7.25,72,039278315103,10039278315100,China,4 years,HPH,2.5,2314 dz,
+T-31520,Tiger Balm Ointment Ultra Strength 10g,60,3.25 x 1.625 x 4.38,,9 x 7.38 x 11,119,039278315202,10039278315209,China,4 years,HPH,2.5,4166 dz,
+T-31541,Tiger Balm Ointment Ultra Strength 50g,32,3 x 1.125 x 4.5,,13.5 x 10 x 5.5,98,039278315417,00039278315325,China,4 years,HPH,2.5,1666 dz,
+T-32202,Tiger Balm Single Patch (12pc/box),144,6.5 x 5.1 x 1.25,,14 x 11 x 4.5,100,039278322026,10039278322023,Malaysia,3 years,HPH,Half a year or more,,
+T-32206,Tiger Balm Patch Small (5pc/box),36,5.88 x 5 x 1.19,,18.5 x 11.25 x 8.25,56,039278322002,30039278322003,Malaysia,3 years,HPH,Half a year or more,20072 boxes (10036 incremental),
+T-32300,Tiger Balm Patch Large (4pc/box),36,5.25 x 5.75 x 1.25,,17.5 x 11 x 8.5,40,039278323009,10039278323006,Taiwan,3 years,HPH,Half a year or more,2016/2688/... dz,
+D-13206,POP Organic Green Tea 1.8gx100,BOX6,8.5 x 5.5 x 2.8,,11.18 x 8.82 x 8.94,136,039278132007,10039278132066,China,36 MONTHS,WHYD,3 MONTHS,1000 CASES,NO
+D-14206,POP OG Jasmine Tea 1.8gx100 (6ct/cs),BOX6,8.5 x 5.5 x 2.8,,11.18 x 8.82 x 8.94,136,039278142006,10039278142065,China,36 MONTHS,WHYD,3 MONTHS,1000 CASES,NO
+D-15206,POP Organic Oolong Tea 1.8gx100,BOX6,8.5 x 5.5 x 2.8,,11.18 x 8.82 x 8.94,136,039278152005,10039278152064,China,36 MONTHS,WHYD,3 MONTHS,1000 CASES,NO
+D-18206,POP Organic White Tea 1.8gx100,BOX6,8.5 x 5.5 x 2.8,,11.18 x 8.82 x 8.94,136,039278182002,10039278182061,China,36 MONTHS,WHYD,3 MONTHS,1000 CASES,NO
+D-03052,POP HT Blood Pressure 1.8gx18,BOX12,4.75 x 3.35 x 3,,10 x 10 x 6.4,125 cs ,039278030525,10039278030522,USA,60,ST,,,
+D-03053,POP HT Blood Sugar 1.8gx18,BOX12,4.75 x 3.35 x 3,,10 x 10 x 6.4,125 cs ,039278030532,10039278030539,USA,60,ST,,,
+D-03054,POP HT Cholesterol 1.8gx18,BOX12,4.75 x 3.35 x 3,,10 x 10 x 6.4,125 cs ,039278030549,10039278030546,USA,60,ST,,,

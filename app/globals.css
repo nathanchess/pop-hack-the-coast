@@ -1,8 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Prince of Peace Brand Colors */
+  --pop-primary: #0080C8;
+  --pop-primary-light: #4DA6E0;
+  --pop-primary-dark: #005A91;
+  
+  /* Neutrals */
+  --neutral-50: #FAFAFA;
+  --neutral-100: #F5F5F5;
+  --neutral-200: #E8E8E8;
+  --neutral-300: #D4D4D4;
+  --neutral-600: #6B6B6B;
+  --neutral-900: #1A1A1A;
+  
+  /* Semantic Colors */
+  --success-light: #D1E7DD;
+  --success: #5A7C6F;
+  --warning-light: #FFF3CD;
+  --warning: #E6A23C;
+  --danger-light: #F8D7DA;
+  --danger: #C94141;
+  
+  /* AI Accent */
+  --ai-accent: #8B7FFF;
+  
+  /* Chart Colors */
+  --chart-1: #5A7C6F;
+  --chart-2: #E8D5B7;
+  --chart-3: #B4A8C8;
+  --chart-4: #E6A23C;
+  --chart-5: #0080C8;
+  
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
 }
 
 @theme inline {
@@ -10,17 +41,146 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  /* Custom colors for Tailwind */
+  --color-pop-primary: var(--pop-primary);
+  --color-pop-primary-light: var(--pop-primary-light);
+  --color-pop-primary-dark: var(--pop-primary-dark);
+  
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-900: var(--neutral-900);
+  
+  --color-success: var(--success);
+  --color-success-light: var(--success-light);
+  --color-warning: var(--warning);
+  --color-warning-light: var(--warning-light);
+  --color-danger: var(--danger);
+  --color-danger-light: var(--danger-light);
+  
+  --color-ai-accent: var(--ai-accent);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Smooth scrolling */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Apple-style glass morphism */
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.glass-hover {
+  background: rgba(245, 245, 245, 0.5);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.glass-active {
+  background: rgba(0, 128, 200, 0.12);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: 0 2px 8px rgba(0, 128, 200, 0.12), 0 0 0 1px rgba(0, 128, 200, 0.08);
+}
+
+.glass-subtle {
+  background: rgba(245, 245, 245, 0.6);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+}
+
+/* Glass panels and buttons */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.glass-button-hover {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.glass-button-active {
+  background: rgba(0, 128, 200, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(0, 128, 200, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 128, 200, 0.15);
+}
+
+.glass-button-small {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-button-small:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Fade up animation */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-fill-mode: backwards;
+}
+
+/* Prevent white flash on button click */
+button:focus {
+  outline: none;
+}
+
+button:active {
+  outline: none;
 }
