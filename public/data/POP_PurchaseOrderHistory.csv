@@ -1,3 +1,4 @@
+PO Number,PO Date,Required Date,Promised Ship Date,Receipt Date,POP Receipt Number,Item Number,Item Description,QTY Shipped,QTY Invoiced,Unit Cost,Extended Cost,Vendor ID,Location Code,Primary Ship To Address,Shipping Method
 37486,12/13/2022,12/29/2022,12/13/2022,01/11/2023,30635,D-04011,POP In Ginger Honey Cytl 18gx30,940,940,59.358,55796.52,IM9HA8A,3,LOS ANGELES,"OCEAN, CIF"
 39795,08/02/2024,11/29/2024,11/03/2024,12/06/2024,35093,D-04011,POP In Ginger Honey Cytl 18gx30,300,0,42.35,12705,IM9HA8A,1,LIVERMORE,"OCEAN, CIF"
 40801,03/19/2025,07/24/2025,06/22/2025,07/31/2025,36807,D-04011,POP In Ginger Honey Cytl 18gx30,420,0,42.35,17787,IM9HA8A,1,LIVERMORE,"OCEAN, CIF"

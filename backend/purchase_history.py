@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import requests
+import json
 from fpdf import FPDF
 from datetime import datetime
 from dotenv import load_dotenv
@@ -46,7 +47,7 @@ class PurchaseOrderPDF(FPDF):
         self.cell(100, 4, 'Website: popus.com', 0, 1, 'L')
         self.ln(10)
 
-    def draw_vendor_shipto(self):
+    def draw_vendor_shipto(self, location_code=None):
         # Background color for headers (Dark Blue)
         self.set_fill_color(56, 76, 126)
         self.set_text_color(255, 255, 255)
@@ -61,12 +62,7 @@ class PurchaseOrderPDF(FPDF):
         self.set_font('Arial', '', 9)
         
         vendor_info = [
-            "[Vendor Company Name]",
-            "[Contact or Department]",
-            "[Street Address]",
-            "[City, ST ZIP]",
-            "Phone: (000) 000-0000",
-            "Fax: (000) 000-0000"
+            f"Vendor Code: {location_code}" if location_code else "[Vendor Company Name]",
         ]
         
         shipto_info = [
@@ -77,6 +73,10 @@ class PurchaseOrderPDF(FPDF):
             "Phone: (510) 887-1899",
             ""
         ]
+        
+        # Ensure vendor_info is at least 6 items long to avoid IndexError
+        vendor_info.extend([''] * max(0, 6 - len(vendor_info)))
+        shipto_info.extend([''] * max(0, 6 - len(shipto_info)))
         
         y_start = self.get_y()
         for i in range(6):
@@ -181,37 +181,36 @@ class PurchaseOrderPDF(FPDF):
         self.cell(0, 5, 'If you have any questions about this purchase order, please contact', 0, 1, 'C')
         self.cell(0, 5, '[Prince of Peace, (510) 887-1899, info@popus.com]', 0, 1, 'C')
 
+def get_latest_csv(directory):
+    if not os.path.exists(directory):
+        return None
+    csv_files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith('.csv')]
+    if not csv_files:
+        return None
+    return max(csv_files, key=os.path.getmtime)
+
 def generate_purchase_orders_pdf():
     # Define file paths
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    true_demand_path = os.path.join(base_dir, '../public/data/true_demand.csv')
+    output_csv_dir = os.path.join(base_dir, 'output_csv')
     inventory_path = os.path.join(base_dir, '../public/data/POP_InventorySnapshot.csv')
     history_path = os.path.join(base_dir, '../public/data/POP_PurchaseOrderHistory.csv')
     output_dir = os.path.join(base_dir, 'outputs')
     
     os.makedirs(output_dir, exist_ok=True)
     
-    # Load data
+    # Load environment variables
+    load_dotenv(os.path.join(base_dir, '.env'))
+    blob_token = os.environ.get("BLOB_READ_WRITE_TOKEN")
+    
+    # Load inventory
     if not os.path.exists(inventory_path):
         print(f"Error: Inventory file not found at {inventory_path}")
         return
-
     df_inventory = pd.read_csv(inventory_path)
     df_inventory.columns = [c.strip() for c in df_inventory.columns]
 
-    if not os.path.exists(true_demand_path):
-        sample_items = df_inventory['Item Number'].head(3).str.strip().tolist()
-        df_demand = pd.DataFrame({
-            'product': sample_items,
-            'urgent': [True, False, True],
-            'importance': [10, 5, 8],
-            'predicted_demand': [50, 20, 100]
-        })
-        os.makedirs(os.path.dirname(true_demand_path), exist_ok=True)
-        df_demand.to_csv(true_demand_path, index=False)
-    else:
-        df_demand = pd.read_csv(true_demand_path)
-        
+    # Load history
     df_history = pd.DataFrame()
     if os.path.exists(history_path):
         try:
@@ -223,96 +222,138 @@ def generate_purchase_orders_pdf():
         except Exception as e:
             print(f"Error reading history file: {e}")
 
-    # Sort demand by importance descending
-    if 'importance' in df_demand.columns:
-        df_demand = df_demand.sort_values(by='importance', ascending=False)
+    # Load latest demand CSV
+    latest_csv = get_latest_csv(output_csv_dir)
+    if not latest_csv:
+        print(f"No CSV files found in {output_csv_dir}")
+        return
+        
+    print(f"Processing latest file: {latest_csv}")
+    df_demand = pd.read_csv(latest_csv)
+    df_demand.columns = [c.strip() for c in df_demand.columns]
     
-    # Setup PDF layout
-    date_str = datetime.now().strftime("%m/%d/%Y")
-    po_number = "REC-001"
+    metadata_list = []
     
-    pdf = PurchaseOrderPDF(po_number, date_str)
-    pdf.add_page()
-    
-    pdf.draw_vendor_shipto()
-    pdf.draw_req_table()
+    # Group by LOCNCODE
+    if 'LOCNCODE' not in df_demand.columns:
+        print("Error: 'LOCNCODE' column not found in the CSV.")
+        return
+        
+    for location_code, group in df_demand.groupby('LOCNCODE'):
+        location_code = str(location_code).strip()
+        
+        # Setup PDF layout
+        date_str = datetime.now().strftime("%m/%d/%Y")
+        po_number = f"REC-{location_code}-001"
+        
+        pdf = PurchaseOrderPDF(po_number, date_str)
+        pdf.add_page()
+        
+        pdf.draw_vendor_shipto(location_code)
+        pdf.draw_req_table()
 
-    # Create Items List
-    items = []
-    print("Generating Recommended Purchase Orders PDF...")
-    
-    for _, row in df_demand.iterrows():
-        product = str(row['product']).strip()
-        predicted_demand = float(row.get('predicted_demand', 1))
+        items = []
+        total_qty = 0
+        total_cost = 0.0
         
-        if predicted_demand <= 0:
-            predicted_demand = 1
+        # Sort the items for this location by aggregate_metric descending if possible
+        if 'aggregate_metric' in group.columns:
+            group = group.sort_values(by='aggregate_metric', ascending=False)
             
-        inv_row = df_inventory[df_inventory['Item Number'].str.strip() == product]
-        description = "Unknown Item" if inv_row.empty else inv_row.iloc[0]['Description']
-            
-        qty_to_order = int(predicted_demand * 30)
-        if qty_to_order <= 0:
-            qty_to_order = 1
-            
-        unit_price = 0.0
-        if not df_history.empty and 'Item Number' in df_history.columns and 'Unit Cost' in df_history.columns:
-            item_history = df_history[df_history['Item Number'].str.strip() == product]
-            if not item_history.empty:
-                recent_cost = item_history.iloc[-1]['Unit Cost']
-                unit_price = float(recent_cost) if not pd.isna(recent_cost) else 0.0
+        for _, row in group.iterrows():
+            if 'ITEMNMBR' not in row:
+                continue
                 
-        total_price = qty_to_order * unit_price
+            product = str(row['ITEMNMBR']).strip()
+            
+            # Quantity logic
+            qty_to_order = 1
+            if 'current_gap' in row:
+                qty_val = float(row['current_gap'])
+                if qty_val > 0:
+                    qty_to_order = int(qty_val)
+                    
+            inv_row = df_inventory[df_inventory['Item Number'].str.strip() == product]
+            description = "Unknown Item" if inv_row.empty else inv_row.iloc[0]['Description']
+                
+            unit_price = 0.0
+            if not df_history.empty and 'Item Number' in df_history.columns and 'Unit Cost' in df_history.columns:
+                item_history = df_history[df_history['Item Number'].str.strip() == product]
+                if not item_history.empty:
+                    recent_cost = item_history.iloc[-1]['Unit Cost']
+                    unit_price = float(recent_cost) if not pd.isna(recent_cost) else 0.0
+                    
+            item_total = qty_to_order * unit_price
+            
+            items.append({
+                'item_num': product,
+                'desc': description,
+                'qty': qty_to_order,
+                'unit_price': unit_price,
+                'total_price': item_total
+            })
+            
+            total_qty += qty_to_order
+            total_cost += item_total
+
+        pdf.draw_items_table(items)
         
-        items.append({
-            'item_num': product,
-            'desc': description,
-            'qty': qty_to_order,
-            'unit_price': unit_price,
-            'total_price': total_price
+        # Save the output PDF
+        output_filename = os.path.join(output_dir, f"Recommended_Purchase_Orders_{location_code}.pdf")
+        pdf.output(output_filename)
+        print(f"\n -> Created: {output_filename}")
+        
+        pdf_url = ""
+        # --- Vercel Blob Upload for PDF ---
+        if blob_token:
+            try:
+                with open(output_filename, 'rb') as f:
+                    url = f"https://blob.vercel-storage.com/Recommended_Purchase_Orders_{location_code}.pdf"
+                    headers = {
+                        "authorization": f"Bearer {blob_token}",
+                        "x-api-version": "7"
+                    }
+                    response = requests.put(url, headers=headers, data=f)
+                    response.raise_for_status()
+                    pdf_url = response.json().get("url")
+                    print(f"    -> Uploaded to Vercel Blob: {pdf_url}")
+            except Exception as e:
+                print(f"    -> Error uploading PDF to Vercel Blob: {e}")
+                
+        metadata_list.append({
+            "po_number": po_number,
+            "vendor_code": location_code,
+            "quantity": total_qty,
+            "estimated_cost": round(total_cost, 2),
+            "pdf_url": pdf_url
         })
 
-    pdf.draw_items_table(items)
-    
-    # Save the output
-    output_filename = os.path.join(output_dir, "Recommended_Purchase_Orders.pdf")
-    pdf.output(output_filename)
-    print(f" -> Created: {output_filename}")
-    
-    # --- Vercel Blob Upload ---
-    # Load environment variables from .env in the same directory
-    load_dotenv(os.path.join(base_dir, '.env'))
-    
-    # To upload to Vercel Blob, you need to have the BLOB_READ_WRITE_TOKEN
-    # set in your environment variables.
-    blob_token = os.environ.get("BLOB_READ_WRITE_TOKEN")
-    
+    # Output metadata
+    metadata_filename = os.path.join(output_dir, "po_metadata.json")
+    with open(metadata_filename, 'w') as f:
+        json.dump(metadata_list, f, indent=4)
+        
+    print(f"\n -> Created Metadata: {metadata_filename}")
+        
+    # Upload metadata.json to Vercel Blob
     if blob_token:
-        print("Uploading PDF to Vercel Blob...")
         try:
-            with open(output_filename, 'rb') as f:
-                # The Vercel Blob REST API for file uploads
-                url = "https://blob.vercel-storage.com/Recommended_Purchase_Orders.pdf"
+            with open(metadata_filename, 'rb') as f:
+                url = f"https://blob.vercel-storage.com/po_metadata.json"
                 headers = {
                     "authorization": f"Bearer {blob_token}",
                     "x-api-version": "7"
                 }
-                
                 response = requests.put(url, headers=headers, data=f)
                 response.raise_for_status()
-                
-                blob_data = response.json()
-                blob_url = blob_data.get("url")
-                print(f" -> Successfully uploaded to Vercel Blob!")
-                print(f" -> Access URL: {blob_url}")
-                
-                # You can then pass this URL to your frontend
-                
+                meta_url = response.json().get("url")
+                print(f"    -> Uploaded Metadata to Vercel Blob: {meta_url}")
         except Exception as e:
-            print(f" -> Error uploading to Vercel Blob: {e}")
-    else:
+            print(f"    -> Error uploading Metadata to Vercel Blob: {e}")
+            
+    if not blob_token:
         print("\nNote: BLOB_READ_WRITE_TOKEN environment variable not found.")
-        print("To send this PDF to the frontend via Vercel Blob, make sure to add your Vercel Blob token to your environment.")
+        print("To send these files to the frontend via Vercel Blob, make sure to add your Vercel Blob token to your .env file.")
 
 if __name__ == "__main__":
     generate_purchase_orders_pdf()
