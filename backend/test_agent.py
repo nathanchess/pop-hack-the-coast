@@ -6,6 +6,7 @@ def test_summary_request():
     # This simulates the agent having already run a load command.
     initial_state = {
         "messages": [
+<<<<<<< HEAD
             HumanMessage(content="""POP's sales data tells an incomplete story, and the gaps lead to bad decisions.
 When a customer orders 1,000 units and POP only has 500 available, the customer service
 team contacts the buyer to negotiate the order down. POP ships what it has, records the sale as
@@ -74,6 +75,13 @@ This table lists the top 10 items with the highest estimated true demand over th
 # "messages": [
 #             HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary include products with the highest profit margin, revenue, and cost. Tell me what this reflects about my customers. Assume that the user has no access to the final jupyter notebook so you must list out the items in your final summary. 
 # """)],
+=======
+            HumanMessage(content="""Tell me about what products are in demand. 
+            Give me the detailed list with item names in your final summary 
+            include products with the highest profit margin, revenue, and cost. 
+            Tell me what this reflects about my customers
+""")],
+>>>>>>> 7689de412e1141067414504b345bdd20ac8ee095
         "notebook_cells": [],
         # Telling the agent it has a dataframe makes it more likely to summarize
         "internal_variables": {"df_sales": "DataFrame"}, 
