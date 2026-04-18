@@ -6,82 +6,11 @@ def test_summary_request():
     # This simulates the agent having already run a load command.
     initial_state = {
         "messages": [
-<<<<<<< HEAD
-            HumanMessage(content="""POP's sales data tells an incomplete story, and the gaps lead to bad decisions.
-When a customer orders 1,000 units and POP only has 500 available, the customer service
-team contacts the buyer to negotiate the order down. POP ships what it has, records the sale as
-500, and the other 500 units of demand disappear entirely. The system does not capture lost
-sales. There is a backorder function but it is incompatible with our workflow and customer
-requirements. Over time, this understates true demand and reinforces the cycle: lower recorded
-sales lead to smaller reorders, more stockouts, and further suppressed demand signal.
-The problem compounds when you look at how sales data is presented. A buyer sees blended
-revenue by SKU but can't distinguish full-price sales from markdown volume. A product showing
-$50,000 in monthly revenue looks strong, but half may have been sold at a steep discount to
-flush short-dated inventory. The real healthy demand signal is $25,000. Without that distinction,
-a buyer may reorder aggressively on a product that is actually underperforming. Developer a complete picture of
-demand and translate it into better ordering decisions. This could include: surfacing
-lost/suppressed demand, separating healthy demand from markdown volume, forecasting by
-channel and SKU, alerting buyers when reorder points are approaching, or generating draft
-purchase order recommendations. The goal is better signal and smarter action. 
-
-
-Analyse the data to predict true demand for the next 3 months, considering that the current orders do not necessarily reflect the true demand. 
-After analysis, list out the items with highest true demand in a table format. 
-On top of the table, provide some explaination on how you did the analysis to get the true demand.Do not just plan. Execute the plan
-
-In summary, produce 2 things in your output: a table for a list of the top items with highest demand, and a short step by step on how you did the analysis.
-For example:
-##################################################
-FINAL AGENT ANSWER
-##################################################
-The analysis involved several steps to estimate the true demand for each SKU over the next three months:
-
-1. **Data Preparation**: Converted transaction dates to datetime format and filtered for invoice transactions to focus on actual sales.
-
-2. **Aggregation**: Summed daily quantities and extended prices per SKU to understand daily sales patterns.
-
-3. **Stockout Adjustment**: Identified days with zero sales, which could indicate stockouts or no demand, and estimated potential demand during these days using a rolling average of recent sales.
-
-4. **Demand Segregation**: Distinguished between full-price and markdown sales based on a price threshold (e.g., 50% of average price). This helped in understanding how much demand was suppressed due to markdowns.
-
-5. **Demand Summation**: Calculated total demand, markdown demand, and full-price demand for each SKU to identify the true demand that might be hidden behind stockouts and markdowns.
-
-6. **Forecasting**: Used a simple linear regression model to identify demand trends over time, combined with seasonal dummy variables for months and days of the week, to project demand for the next three months (90 days).
-
-7. **Results**: Ranked SKUs by estimated demand, highlighting those with the highest true demand, and included the percentage of demand lost or suppressed due to stockouts or markdowns.
-
-The resulting table lists the top 10 SKUs with the highest estimated demand, providing a clearer picture of which products are genuinely in high demand and should be prioritized for reordering.
-##################################################
-| ITEMNMBR | predicted_demand |
-| -------- | ---------------- |
-| F-04211 | 486221.78 |
-| T-32202 | 331541.95 |
-| AC-B9SL | 185712.86 |
-| T-31520 | 108237.21 |
-| T-31510 | 106593.11 |
-| F-04111 | 67493.06 |
-| F-04070 | 53970.87 |
-| T-32206 | 53444.07 |
-| F-04073 | 32520.08 |
-| F-04112 | 31783.76 |
-
-This table lists the top 10 items with the highest estimated true demand over the next three months, accounting for lost sales and markdowns. The demand estimates are based on a simple linear regression forecast of historical total demand (full-price plus markdown sales).
-##################################################
-""")
-        ],
-#         "messages": [
-#             HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary include products with the highest profit margin, revenue, and cost. Tell me what this reflects about my customers
-# """)],
-# "messages": [
-#             HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary include products with the highest profit margin, revenue, and cost. Tell me what this reflects about my customers. Assume that the user has no access to the final jupyter notebook so you must list out the items in your final summary. 
-# """)],
-=======
             HumanMessage(content="""Tell me about what products are in demand. 
             Give me the detailed list with item names in your final summary 
             include products with the highest profit margin, revenue, and cost. 
             Tell me what this reflects about my customers
 """)],
->>>>>>> 7689de412e1141067414504b345bdd20ac8ee095
         "notebook_cells": [],
         # Telling the agent it has a dataframe makes it more likely to summarize
         "internal_variables": {"df_sales": "DataFrame"}, 
