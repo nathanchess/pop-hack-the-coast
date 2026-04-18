@@ -77,6 +77,9 @@ def make_main_ai_planner(llm_with_tools):
         {recent_outputs if recent_outputs else "No output yet."}
         """
 
+        with open("backend/temp.txt", "w") as file:
+            file.write(system_prompt)
+
         messages = [SystemMessage(content=system_prompt)] + state["messages"]
 
         # Visibility: Print the context the Planner is using

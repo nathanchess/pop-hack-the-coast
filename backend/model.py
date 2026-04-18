@@ -9,7 +9,7 @@ from langchain_core.tools import tool
 
 load_dotenv()
 model = init_chat_model(
-    "gpt-4.1-mini",
+    "gpt-5.4",
     model_provider="openai",
     api_key=os.getenv("GPT_KEY"),
     max_retries=0,

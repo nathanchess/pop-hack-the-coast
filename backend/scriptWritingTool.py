@@ -29,15 +29,21 @@ def script_writing_tool(state: AgentState):
 
     IMPORTANT: You MUST use the exact variable names listed in 'Current Variables in Memory'.
     Current Variables in Memory: {state['internal_variables']}
-    Previous jupyter notebook contents: {jupyter_notebook_contents}
+    
     
     If you are not given the column names for csvs, you should not continue the job.
-    
+    There are successful python runs below. You are to write more code to further fulfil the planner's goal. 
+
+
     Task: Write a single Python code block to perform the analysis requested by the planner.
     - Use pandas, matplotlib, or seaborn as needed.
     - DO NOT assume variable names like 'df_sales' unless they appear in the list above.
     - Output ONLY the raw Python code. Do not include markdown formatting or explanations.
     - Print the results or head of dataframes so the user can see the output.
+
+    Previous jupyter notebook contents: {jupyter_notebook_contents}
+    End of notebook contents
+
     """
 
     # Find the tool call ID to satisfy the API structure
@@ -58,6 +64,9 @@ def script_writing_tool(state: AgentState):
     print("="*50 + "\n")
 
     code_content = response.content.strip()
+    # with open("backend/temp2.txt", "w") as file:
+    #     file.write(code_gen_prompt)
+    #     file.write(code_content)
     print("code content", code_content)
 
     # Clean up markdown code blocks if the model accidentally included them
