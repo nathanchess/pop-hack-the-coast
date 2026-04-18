@@ -28,6 +28,8 @@ def script_writing_tool(state: AgentState):
     IMPORTANT: You MUST use the exact variable names listed in 'Current Variables in Memory'.
     Current Variables in Memory: {state['internal_variables']}
     
+    If you are not given the column names for csvs, you should not continue the job.
+    
     Task: Write a single Python code block to perform the analysis requested by the planner.
     - Use pandas, matplotlib, or seaborn as needed.
     - DO NOT assume variable names like 'df_sales' unless they appear in the list above.

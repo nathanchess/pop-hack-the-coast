@@ -43,7 +43,28 @@ def make_main_ai_planner(llm_with_tools):
 
         Context:
         - Current Variables: {state['internal_variables']}
-        - Files available: POP_ImportShipmentStatus.csv, POP_ItemSpecMaster.csv, POP_AssemblyOrders.csv, POP_InternalTransferHistory.csv, POP_PurchaseOrderHistory.csv, POP_ChargeBack_Deductions_Penalties_Freight.csv, POP_InternalTransferRequests.csv, POP_SalesTransactionHistory.csv, POP_DataDictionary.csv, POP_InventorySnapshot.csv
+        - Files available: POP_ImportShipmentStatus.csv, POP_ItemSpecMaster.csv, POP_AssemblyOrders.csv, POP_InternalTransferHistory.csv, POP_PurchaseOrderHistory.csv, POP_ChargeBack_Deductions_Penalties_Freight.csv, POP_Cleaned_InternalTransferRequests.csv, POP_SalesTransactionHistory.csv, POP_DataDictionary.csv, POP_InventorySnapshot.csv
+        POP_ImportShipmentStatus.csv: Column Names are PO#,Port,# of ctns,Container #,Product Description,ETA Date, FDA release Date, Arrival Date, Remarks
+        POP_ItemSpecMaster.csv: Column Names are Item Number,Description,Case Pack,unit dimension (L*W*H) (in),inner case dimension (L*W*H) (in),master case dimension (L*W*H) (in),Case/ Pallet,UPC#,Mstr Ctn UPC#,Country of Origin,Shelf Life (Months),Maufactuer/ CoPacker,Lead Time,MOQ,Allergens
+        POP_AssemblyOrders.csv: Column Names are Document Date,Document Number,Document Type,Item Number,U Of M,TRX QTY,Unit Cost,Extended Cost,TRX Location,Document Status
+        POP_InternalTransferHistory.csv: Column Names are Document Number,Document Date,Document Type,Item Number,Item Description,U Of M,TRX QTY,Unit Cost,Extended Cost,TRX Location,Transfer To Location,Document Status
+        POP_PurchaseOrderHistory.csv: Column Names are PO Number,PO Date,Required Date,Promised Ship Date,Receipt Date,POP Receipt Number,Item Number,Item Description,QTY Shipped,QTY Invoiced,Unit Cost,Extended Cost,Vendor ID,Location Code,Primary Ship To Address,Shipping Method
+        POP_ChargeBack_Deductions_Penalties_Freight.csv: Column Names are Document Date,Document Number,Document Type,Item Number,U Of M,TRX QTY,Unit Cost,Extended Cost,TRX Location,Document Status
+        POP_Cleaned_InternalTransferRequests.csv: Column Names are Week,Cut_Off,Row_Index,Item_ID,Qty,Col4,Note,Requested_By,Date_Shipped,Transfer_Reason,Shipment_Status
+        POP_SalesTransactionHistory.csv: Column Names are LOCNCODE,SLPRSNID,CUSTNMBR,CITY,STATE,ZIPCODE,SOP TYPE,SOPNUMBE,DOCDATE,ITEMNMBR,ITEMDESC,QUANTITY_adj,UOFM,QTYBSUOM,XTNDPRCE_adj,EXTDCOST_adj,Customer Type,Product Type,Source_File,Gross_Profit_adj,Margin_Pct_adj,UOM_Price,Unit_Price_adj
+        POP_DataDictionary.csv: Column Names are Data File,Data Field,Notes
+        POP_InventorySnapshot.csv: Column Names are Item Number,Description,Available,On Hand
+        
+        
+        On the bottom of the response, for each file write the file name and its column names as a reference for the LLM. This will help the ScriptWriter understand what data it can work with when generating code.
+        
+
+
+
+        
+
+"
+
         
         Recent Execution Output:
         {recent_outputs if recent_outputs else "No output yet."}

@@ -25,7 +25,7 @@ def test_summary_request():
 # """)
         # ],
         "messages": [
-            HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary. Tell me what this reflects about my customers
+            HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary include products with the highest profit margin, revenue, and cost. Tell me what this reflects about my customers
 """)],
         "notebook_cells": [],
         # Telling the agent it has a dataframe makes it more likely to summarize
