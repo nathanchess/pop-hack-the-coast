@@ -1,8 +1,10 @@
 import pandas as pd
 import numpy as np
 import os
+import requests
 from fpdf import FPDF
 from datetime import datetime
+from dotenv import load_dotenv
 
 class PurchaseOrderPDF(FPDF):
     def __init__(self, po_number, date_str):
@@ -276,6 +278,41 @@ def generate_purchase_orders_pdf():
     output_filename = os.path.join(output_dir, "Recommended_Purchase_Orders.pdf")
     pdf.output(output_filename)
     print(f" -> Created: {output_filename}")
+    
+    # --- Vercel Blob Upload ---
+    # Load environment variables from .env in the same directory
+    load_dotenv(os.path.join(base_dir, '.env'))
+    
+    # To upload to Vercel Blob, you need to have the BLOB_READ_WRITE_TOKEN
+    # set in your environment variables.
+    blob_token = os.environ.get("BLOB_READ_WRITE_TOKEN")
+    
+    if blob_token:
+        print("Uploading PDF to Vercel Blob...")
+        try:
+            with open(output_filename, 'rb') as f:
+                # The Vercel Blob REST API for file uploads
+                url = "https://blob.vercel-storage.com/Recommended_Purchase_Orders.pdf"
+                headers = {
+                    "authorization": f"Bearer {blob_token}",
+                    "x-api-version": "7"
+                }
+                
+                response = requests.put(url, headers=headers, data=f)
+                response.raise_for_status()
+                
+                blob_data = response.json()
+                blob_url = blob_data.get("url")
+                print(f" -> Successfully uploaded to Vercel Blob!")
+                print(f" -> Access URL: {blob_url}")
+                
+                # You can then pass this URL to your frontend
+                
+        except Exception as e:
+            print(f" -> Error uploading to Vercel Blob: {e}")
+    else:
+        print("\nNote: BLOB_READ_WRITE_TOKEN environment variable not found.")
+        print("To send this PDF to the frontend via Vercel Blob, make sure to add your Vercel Blob token to your environment.")
 
 if __name__ == "__main__":
     generate_purchase_orders_pdf()
