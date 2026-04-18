@@ -58,6 +58,7 @@ def script_writing_tool(state: AgentState):
     print("="*50 + "\n")
 
     code_content = response.content.strip()
+    print("code content", code_content)
 
     # Clean up markdown code blocks if the model accidentally included them
     if code_content.startswith("```python"):

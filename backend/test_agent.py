@@ -6,7 +6,6 @@ def test_summary_request():
     # This simulates the agent having already run a load command.
     initial_state = {
         "messages": [
-<<<<<<< HEAD
             HumanMessage(content="""POP's sales data tells an incomplete story, and the gaps lead to bad decisions.
 When a customer orders 1,000 units and POP only has 500 available, the customer service
 team contacts the buyer to negotiate the order down. POP ships what it has, records the sale as
@@ -25,16 +24,20 @@ channel and SKU, alerting buyers when reorder points are approaching, or generat
 purchase order recommendations. The goal is better signal and smarter action. 
 
 
-Analyse the data to predict true demand for the next 3 months, considering that the current orders do not necessarily reflect the true demand. 
-After analysis, list out the items with highest true demand in a table format. 
-On top of the table, provide some explaination on how you did the analysis to get the true demand.Do not just plan. Execute the plan
+Analyse the data to predict true demand for the next one month, considering that the current orders do not necessarily reflect the true demand. 
+Additionally, analyse current inventory to determine if we have sufficient stock to meet the predicted demand, keep in mind that demand should be dependent on location and the stock is dependent on which of the 3 warehouse are closest to that location. 
+Next, find the current gap in inventory (demand -  current inventory). 
+Next, generate the value of each product based on how often it gets marked down and the profit margin. We want to have a value metric of each product. 
+next, generate the aggregate metric by scaling both the value and current gap and adding their scaled value. 
+
+Before you print your final output, ask the writer agent to write to a the table (like how it would look in your final summary, but with all the data instead of top 20) to a csv file, with the filepath: ./backend/output_csv/{current_time}.csv . To reiterate, this csv has to be the full output data.
 
 In summary, produce 2 things in your output: a table for a list of the top items with highest demand, and a short step by step on how you did the analysis.
-For example:
+here is a template:
 ##################################################
 FINAL AGENT ANSWER
 ##################################################
-The analysis involved several steps to estimate the true demand for each SKU over the next three months:
+The analysis involved several steps to estimate the true demand for each SKU over the next one month:
 
 1. **Data Preparation**: Converted transaction dates to datetime format and filtered for invoice transactions to focus on actual sales.
 
@@ -50,22 +53,15 @@ The analysis involved several steps to estimate the true demand for each SKU ove
 
 7. **Results**: Ranked SKUs by estimated demand, highlighting those with the highest true demand, and included the percentage of demand lost or suppressed due to stockouts or markdowns.
 
-The resulting table lists the top 10 SKUs with the highest estimated demand, providing a clearer picture of which products are genuinely in high demand and should be prioritized for reordering.
+The resulting table lists the top 20 SKUs with the highest aggregate metric, providing a clearer picture of which products are genuinely in high demand and should be prioritized for reordering.
 ##################################################
-| ITEMNMBR | predicted_demand |
-| -------- | ---------------- |
-| F-04211 | 486221.78 |
-| T-32202 | 331541.95 |
-| AC-B9SL | 185712.86 |
-| T-31520 | 108237.21 |
-| T-31510 | 106593.11 |
-| F-04111 | 67493.06 |
-| F-04070 | 53970.87 |
-| T-32206 | 53444.07 |
-| F-04073 | 32520.08 |
-| F-04112 | 31783.76 |
+| ITEMNMBR | warehouse location |predicted_demand for location (item count) | Current inventory for location (item count) | Current gap (item count) | Item value | Aggregate metric |
+| -------- | ------------------ |---------------- | ---------------- | ---------------- | ------------ | ------- | 
+| F-04211 | 1 | 486221 | 30 | 486191 | 50 | 1.5 |
+| T-32202 | 2 | 331541 | 20 | 331521 | 100 | 1.1 |
+| AC-B9SL | 3 | 185712 | 100 | 185612 | 60 | 0.6 |
 
-This table lists the top 10 items with the highest estimated true demand over the next three months, accounting for lost sales and markdowns. The demand estimates are based on a simple linear regression forecast of historical total demand (full-price plus markdown sales).
+This table lists the top 20 with the highest estimated aggregate metric over the next three months, accounting for lost sales and markdowns. The demand estimates are based on a simple linear regression forecast of historical total demand (full-price plus markdown sales).
 ##################################################
 """)
         ],
@@ -75,13 +71,6 @@ This table lists the top 10 items with the highest estimated true demand over th
 # "messages": [
 #             HumanMessage(content="""tell me about what products are in demand. GIve me the detailed list with item names in your final summary include products with the highest profit margin, revenue, and cost. Tell me what this reflects about my customers. Assume that the user has no access to the final jupyter notebook so you must list out the items in your final summary. 
 # """)],
-=======
-            HumanMessage(content="""Tell me about what products are in demand. 
-            Give me the detailed list with item names in your final summary 
-            include products with the highest profit margin, revenue, and cost. 
-            Tell me what this reflects about my customers
-""")],
->>>>>>> 7689de412e1141067414504b345bdd20ac8ee095
         "notebook_cells": [],
         # Telling the agent it has a dataframe makes it more likely to summarize
         "internal_variables": {"df_sales": "DataFrame"}, 

@@ -46,3 +46,4 @@ backend/.env
 venv
 backend/__pycache__
 backend/notebooks/
+/backend/output_csv/
