@@ -9,7 +9,7 @@ from langchain_core.tools import tool
 
 load_dotenv()
 model = init_chat_model(
-    "gpt-4.1-nano",
+    "gpt-4.1-mini",
     model_provider="openai",
     api_key=os.getenv("GPT_KEY"),
     max_retries=0,
@@ -29,6 +29,27 @@ class AgentState(TypedDict):
     next_step: str
     # The path to the unique notebook for this session
     notebook_path: str
+
+def getJupyterNotebookContents(agentState) -> str:
+    execution_history = ""
+    recent_cells = [c for c in agentState.get("notebook_cells", []) if c["cell_type"] == "code"][-5:]
+        
+    for i, cell in enumerate(recent_cells):
+        cell_id = i + 1
+        cell_output = ""
+        for out in cell.get("outputs", []):
+            if out.get("output_type") == "stream":
+                cell_output += out.get("text", "")
+            elif "data" in out and "text/plain" in out["data"]:
+                cell_output += out["data"]["text/plain"]
+            elif out.get("output_type") == "error":
+                # Combine the traceback lines into a single string
+                cell_output += "\n".join(out.get("traceback", []))
+        
+        if cell_output:
+            execution_history += f"\n--- CELL {cell_id} OUTPUT ---\n{cell_output}\n"
+
+    return execution_history if execution_history else "No output yet."
 
 #tools must match nodes defined in mainLangraph.py
 tools = {

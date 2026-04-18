@@ -1,6 +1,6 @@
 from langchain_core.messages import SystemMessage, AIMessage, ToolMessage
 from langchain_core.tools import tool
-from model import model, AgentState, tools
+from model import model, AgentState, tools, getJupyterNotebookContents
 
 def script_writing_tool(state: AgentState):
     """
@@ -19,6 +19,8 @@ def script_writing_tool(state: AgentState):
     goal = tool_args.get("goal", "Perform analysis")
     instructions = tool_args.get("instructions", "Use your best judgment.")
 
+    jupyter_notebook_contents = getJupyterNotebookContents(state)
+
     # 3. Construct a prompt for code generation
     code_gen_prompt = f"""You are an expert Python Data Scientist.
     
@@ -27,6 +29,7 @@ def script_writing_tool(state: AgentState):
 
     IMPORTANT: You MUST use the exact variable names listed in 'Current Variables in Memory'.
     Current Variables in Memory: {state['internal_variables']}
+    Previous jupyter notebook contents: {jupyter_notebook_contents}
     
     If you are not given the column names for csvs, you should not continue the job.
     

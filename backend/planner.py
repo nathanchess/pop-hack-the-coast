@@ -1,5 +1,5 @@
 from langchain_core.messages import SystemMessage
-from model import AgentState, tools
+from model import AgentState, tools, getJupyterNotebookContents
 
 def make_main_ai_planner(llm_with_tools):
     def main_ai_planner(state: AgentState):
@@ -7,25 +7,27 @@ def make_main_ai_planner(llm_with_tools):
         
         # Extract recent outputs to give the LLM context on what happened
         # We now look at the last 5 code cells to ensure we don't lose context on data loading
-        execution_history = ""
-        recent_cells = [c for c in state.get("notebook_cells", []) if c["cell_type"] == "code"][-5:]
+        # execution_history = ""
+        # recent_cells = [c for c in state.get("notebook_cells", []) if c["cell_type"] == "code"][-5:]
         
-        for i, cell in enumerate(recent_cells):
-            cell_id = i + 1
-            cell_output = ""
-            for out in cell.get("outputs", []):
-                if out.get("output_type") == "stream":
-                    cell_output += out.get("text", "")
-                elif "data" in out and "text/plain" in out["data"]:
-                    cell_output += out["data"]["text/plain"]
-                elif out.get("output_type") == "error":
-                    # Combine the traceback lines into a single string
-                    cell_output += "\n".join(out.get("traceback", []))
+        # for i, cell in enumerate(recent_cells):
+        #     cell_id = i + 1
+        #     cell_output = ""
+        #     for out in cell.get("outputs", []):
+        #         if out.get("output_type") == "stream":
+        #             cell_output += out.get("text", "")
+        #         elif "data" in out and "text/plain" in out["data"]:
+        #             cell_output += out["data"]["text/plain"]
+        #         elif out.get("output_type") == "error":
+        #             # Combine the traceback lines into a single string
+        #             cell_output += "\n".join(out.get("traceback", []))
             
-            if cell_output:
-                execution_history += f"\n--- CELL {cell_id} OUTPUT ---\n{cell_output}\n"
+        #     if cell_output:
+        #         execution_history += f"\n--- CELL {cell_id} OUTPUT ---\n{cell_output}\n"
 
-        recent_outputs = execution_history if execution_history else "No output yet."
+        # recent_outputs = execution_history if execution_history else "No output yet."
+
+        recent_outputs = getJupyterNotebookContents(state)
 
         system_prompt = f"""You are an Autonomous Data Science Agent.
         
@@ -40,9 +42,11 @@ def make_main_ai_planner(llm_with_tools):
         DEBUGGING & SELF-CORRECTION:
         - If you see a Python error (Traceback, NameError, etc.) in the 'RECENT NOTEBOOK ACTIVITY', your NEXT STEP must be 'write' to fix that error.
         - Specifically analyze the error message and rewrite the code to correct the mistake.
+        - if any python libraries are missing, stop doing analysis and instead list out all the required libraries to install in your response as your final response. 
 
         Context:
         - Current Variables: {state['internal_variables']}
+        - previous jupyter notebook outputs: {recent_outputs}
         - Files available: POP_ImportShipmentStatus.csv, POP_ItemSpecMaster.csv, POP_AssemblyOrders.csv, POP_InternalTransferHistory.csv, POP_PurchaseOrderHistory.csv, POP_ChargeBack_Deductions_Penalties_Freight.csv, POP_Cleaned_InternalTransferRequests.csv, POP_SalesTransactionHistory.csv, POP_DataDictionary.csv, POP_InventorySnapshot.csv
         POP_ImportShipmentStatus.csv: Column Names are PO#,Port,# of ctns,Container #,Product Description,ETA Date, FDA release Date, Arrival Date, Remarks
         POP_ItemSpecMaster.csv: Column Names are Item Number,Description,Case Pack,unit dimension (L*W*H) (in),inner case dimension (L*W*H) (in),master case dimension (L*W*H) (in),Case/ Pallet,UPC#,Mstr Ctn UPC#,Country of Origin,Shelf Life (Months),Maufactuer/ CoPacker,Lead Time,MOQ,Allergens
@@ -57,11 +61,10 @@ def make_main_ai_planner(llm_with_tools):
         
         
         On the bottom of the response, for each file write the file name and its column names as a reference for the LLM. This will help the ScriptWriter understand what data it can work with when generating code.
-        
+        Always run code until you have the final result with actual numbers and names to provide the final summary. 
+        Make sure to check the jupyter output before giving the final summary, it may contain important information. Additionally, you are always required to list examples and numbers in your final summary. You can keep writing code until you have a good answer.Do not assume the notebook ran as you expected, always check for errors.
 
 
-
-        
 
 "
 
