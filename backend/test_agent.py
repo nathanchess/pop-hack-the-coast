@@ -57,11 +57,11 @@ The analysis involved several steps to estimate the true demand for each SKU ove
 
 The resulting table lists the top 20 SKUs with the highest aggregate metric, providing a clearer picture of which products are genuinely in high demand and should be prioritized for reordering.
 ##################################################
-| ITEMNMBR | warehouse location |predicted_demand for location (item count) | Current inventory for location (item count) | Current gap (item count) | Current gap scaled | Item value | Aggregate metric |
+| ITEMNMBR | warehouse location | Product description | unit price | predicted_demand for location (item count) | Current inventory for location (item count) | Current gap (item count) | Current gap scaled | Item value | Aggregate metric |
 | -------- | ------------------ |---------------- | ---------------- | ---------------- | ------------ | ------- | 
-| F-04211 | 1 | 486221 | 30 | 486191 | 50 | 0.9 | 0.6 | 1.5 |
-| T-32202 | 2 | 331541 | 20 | 331521 | 100 | 0.6 | 0.5 | 1.1 |
-| AC-B9SL | 3 | 185712 | 100 | 185612 | 60 | 0.6 | 0.2 | 0.8 |
+| F-04211 | 1 | hoji berry tea | 30 | 486221 | 30 | 486191 | 50 | 0.9 | 0.6 | 1.5 |
+| T-32202 | 2 | Ginseng powder | 15 | 331541 | 20 | 331521 | 100 | 0.6 | 0.5 | 1.1 |
+| AC-B9SL | 3 | hoji berry tea | 30 | 185712 | 100 | 185612 | 60 | 0.6 | 0.2 | 0.8 |
 
 This table lists the top 20 with the highest estimated aggregate metric over the next three months, accounting for lost sales and markdowns. The demand estimates are based on a simple linear regression forecast of historical total demand (full-price plus markdown sales).
 ##################################################
