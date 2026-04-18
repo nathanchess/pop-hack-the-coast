@@ -17,36 +17,43 @@ store = {
     "purchase_orders": []
 }
 
-@app.post("/upload/products")
-async def upload_products(file: UploadFile = File(...)):
+# @app.post("/upload/products")
+# async def upload_products(file: UploadFile = File(...)):
+#     contents = await file.read()
+#     df = pd.read_csv(io.BytesIO(contents))
+    
+#     store["graph_data"] = df[[
+#         "product", 
+#         "urgent", 
+#         "important"
+#         ]].to_dict(orient="records") # more on the way for data
+
+#     return {"message": "Products uploaded", "rows": len(df)}
+
+
+@app.post("/upload")
+async def upload_csv(file: UploadFile = File(...)): #something should be in this constructor
     contents = await file.read()
     df = pd.read_csv(io.BytesIO(contents))
     
     store["graph_data"] = df[[
-        "product", 
-        "urgent", 
-        "important"
-        ]].to_dict(orient="records") # more on the way for data
+        "LOCNCODE",
+        "ITEMNMBR",
+        "Predicted_Demand_30d",
+        "Current_Inventory",
+        "Current_Gap",
+        "Item_Value",
+        "Scaled_Value",
+        "Scaled_Gap",
+        "Aggregate_Metric"
+        ]].to_dict(orient="records")
 
-    return {"message": "Products uploaded", "rows": len(df)}
-
-
-@app.post("/upload/purchase-orders")
-async def upload_purchase_orders(file: UploadFile = File(...)): #something should be in this constructor
-    contents = await file.read()
-    df = pd.read_csv(io.BytesIO(contents))
-    
-    store["purchase_orders"] = df[[
-        "po_number", 
-        "po_date", 
-        "required_date"
-        ]].to_dict(orient="records") # more categories on the way too
-    return {"message": "POs uploaded", "rows": len(df)}
+    return {"message": "CSV uploaded", "rows": len(df)}
 
 
 @app.get("/graph-data")
 def get_graph_data():
-    return store["graph_data"]
+    return store["graph_data"]  
 
 
 @app.get("/purchase-orders")
