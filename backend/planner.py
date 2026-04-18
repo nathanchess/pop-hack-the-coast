@@ -85,6 +85,10 @@ def make_main_ai_planner(llm_with_tools):
         next_step = "end"
         if response.tool_calls:
             t_call = response.tool_calls[0]
+            # Ensure we only keep the tool call we are actually going to process.
+            # This prevents the LLM API from erroring due to unhandled tool calls.
+            response.tool_calls = [t_call]
+            
             tool_name = t_call["name"]
             
             # If it's a load tool, we promote the filename to the message content
