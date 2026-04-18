@@ -185,7 +185,7 @@ def generate_purchase_orders_pdf():
     true_demand_path = os.path.join(base_dir, '../public/data/true_demand.csv')
     inventory_path = os.path.join(base_dir, '../public/data/POP_InventorySnapshot.csv')
     history_path = os.path.join(base_dir, '../public/data/POP_PurchaseOrderHistory.csv')
-    output_dir = os.path.join(base_dir, 'recommended_orders')
+    output_dir = os.path.join(base_dir, 'outputs')
     
     os.makedirs(output_dir, exist_ok=True)
     
