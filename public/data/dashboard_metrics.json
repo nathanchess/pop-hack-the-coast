@@ -1,0 +1,359 @@
+{
+  "timestamp": "2026-04-18T16:48:48.091559",
+  "totalRecords": 236818,
+  "totalRevenue": 261286509.86,
+  "totalRevenueFormatted": "$261.3M",
+  "totalUnits": 15594216.0,
+  "totalUnitsFormatted": "15.6M",
+  "activeSKUs": 83,
+  "avgOrderValue": 2922.144916569742,
+  "avgOrderValueFormatted": "$2,922",
+  "totalGrossProfit": 119678956.63,
+  "totalGrossProfitFormatted": "$119.7M",
+  "avgMargin": 44.65600428857849,
+  "avgMarginFormatted": "44.7%",
+  "totalExtendedCost": 141607553.23000002,
+  "totalExtendedCostFormatted": "$141.6M",
+  "uniqueCustomers": 1632,
+  "uniqueOrders": 89416,
+  "uniqueOrdersFormatted": "89,416",
+  "uniqueLocations": 8,
+  "inventoryTurnover": 1.8451452899240237,
+  "inventoryTurnoverFormatted": "1.8x",
+  "revenueGrowth": "+12.0%",
+  "unitsGrowth": "+8.2%",
+  "marginGrowth": "-0.3%",
+  "channelDistribution": [
+    {
+      "channel": "Club",
+      "revenue": 53312128.0,
+      "revenueFormatted": "$53.3M",
+      "percentage": 20,
+      "units": 804120,
+      "unitsFormatted": "804K",
+      "transactionCount": 202,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Mass",
+      "revenue": 33104987.94,
+      "revenueFormatted": "$33.1M",
+      "percentage": 13,
+      "units": 174258,
+      "unitsFormatted": "174K",
+      "transactionCount": 33493,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Drug",
+      "revenue": 21234466.28,
+      "revenueFormatted": "$21.2M",
+      "percentage": 8,
+      "units": 117170,
+      "unitsFormatted": "117K",
+      "transactionCount": 9384,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Dist-Drug",
+      "revenue": 20487370.89,
+      "revenueFormatted": "$20.5M",
+      "percentage": 8,
+      "units": 153940,
+      "unitsFormatted": "154K",
+      "transactionCount": 15259,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Treasure/Disc",
+      "revenue": 19110805.37,
+      "revenueFormatted": "$19.1M",
+      "percentage": 7,
+      "units": 1906157,
+      "unitsFormatted": "1906K",
+      "transactionCount": 3171,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Dist-HF",
+      "revenue": 13296648.16,
+      "revenueFormatted": "$13.3M",
+      "percentage": 5,
+      "units": 378756,
+      "unitsFormatted": "379K",
+      "transactionCount": 16094,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Herbal",
+      "revenue": 12833037.84,
+      "revenueFormatted": "$12.8M",
+      "percentage": 5,
+      "units": 356483,
+      "unitsFormatted": "356K",
+      "transactionCount": 25644,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Food",
+      "revenue": 12602434.48,
+      "revenueFormatted": "$12.6M",
+      "percentage": 5,
+      "units": 108280,
+      "unitsFormatted": "108K",
+      "transactionCount": 5570,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Supermarket",
+      "revenue": 11595964.98,
+      "revenueFormatted": "$11.6M",
+      "percentage": 4,
+      "units": 221108,
+      "unitsFormatted": "221K",
+      "transactionCount": 32747,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Dollar",
+      "revenue": 10945949.44,
+      "revenueFormatted": "$10.9M",
+      "percentage": 4,
+      "units": 8001007,
+      "unitsFormatted": "8001K",
+      "transactionCount": 2597,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Sub-D",
+      "revenue": 9190181.78,
+      "revenueFormatted": "$9.2M",
+      "percentage": 4,
+      "units": 199310,
+      "unitsFormatted": "199K",
+      "transactionCount": 4476,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Chain",
+      "revenue": 7804174.84,
+      "revenueFormatted": "$7.8M",
+      "percentage": 3,
+      "units": 224653,
+      "unitsFormatted": "225K",
+      "transactionCount": 27780,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Grocery",
+      "revenue": 6603155.22,
+      "revenueFormatted": "$6.6M",
+      "percentage": 2,
+      "units": 150779,
+      "unitsFormatted": "151K",
+      "transactionCount": 12698,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "Dist-Food",
+      "revenue": 6242458.18,
+      "revenueFormatted": "$6.2M",
+      "percentage": 2,
+      "units": 219409,
+      "unitsFormatted": "219K",
+      "transactionCount": 2881,
+      "growth": "+0.0%",
+      "positive": true
+    },
+    {
+      "channel": "E-Comm",
+      "revenue": 4435906.15,
+      "revenueFormatted": "$4.4M",
+      "percentage": 2,
+      "units": 972057,
+      "unitsFormatted": "972K",
+      "transactionCount": 2296,
+      "growth": "+0.0%",
+      "positive": true
+    }
+  ],
+  "topItems": [
+    {
+      "item": "POP AM GSG Root Slices 9 oz",
+      "revenue": 49493577.44,
+      "units": 803664.0
+    },
+    {
+      "item": "Tiger Balm 18g, Ultra/St",
+      "revenue": 36618774.11,
+      "units": 779826.0
+    },
+    {
+      "item": "Tiger Balm Patch Warm (MM)",
+      "revenue": 22985078.59,
+      "units": 448083.0
+    },
+    {
+      "item": "Tiger Balm 18g Red, Ext/St(MM)",
+      "revenue": 20522243.77,
+      "units": 135765.0
+    },
+    {
+      "item": "Tiger Balm 50g, Ultra/St",
+      "revenue": 16738872.82,
+      "units": 86920.0
+    },
+    {
+      "item": "POP Ginger Chews Original 4 oz (12ct/cs)",
+      "revenue": 9182702.24,
+      "units": 980858.0
+    },
+    {
+      "item": "Tiger Balm Ultra 10g",
+      "revenue": 7753529.51,
+      "units": 1178111.0
+    },
+    {
+      "item": "AM GSG RT Tea 60 Bags (15/cs)",
+      "revenue": 6179219.5,
+      "units": 27998.0
+    },
+    {
+      "item": "Kwan Loong Oil 2 fl oz",
+      "revenue": 5515509.09,
+      "units": 25721.0
+    },
+    {
+      "item": "POP Ginger Chews Lemon 4 oz (12ct/cs)",
+      "revenue": 4687799.25,
+      "units": 522530.0
+    }
+  ],
+  "topStates": [
+    {
+      "state": "CA",
+      "revenue": 92080469.72,
+      "percentage": 35.2
+    },
+    {
+      "state": "NY",
+      "revenue": 20274954.59,
+      "percentage": 7.8
+    },
+    {
+      "state": "NJ",
+      "revenue": 19193441.27,
+      "percentage": 7.3
+    },
+    {
+      "state": "PA",
+      "revenue": 15105663.03,
+      "percentage": 5.8
+    },
+    {
+      "state": "TX",
+      "revenue": 14249791.18,
+      "percentage": 5.5
+    },
+    {
+      "state": "FL",
+      "revenue": 10398253.08,
+      "percentage": 4.0
+    },
+    {
+      "state": "IL",
+      "revenue": 6538308.95,
+      "percentage": 2.5
+    },
+    {
+      "state": "VA",
+      "revenue": 6277619.94,
+      "percentage": 2.4
+    },
+    {
+      "state": "NC",
+      "revenue": 6164719.59,
+      "percentage": 2.4
+    },
+    {
+      "state": "GA",
+      "revenue": 5544248.75,
+      "percentage": 2.1
+    }
+  ],
+  "productTypes": [
+    {
+      "type": "OTC",
+      "revenue": 122177791.99,
+      "units": 5984498.0,
+      "percentage": 46.8
+    },
+    {
+      "type": "AGBag",
+      "revenue": 59303950.62,
+      "units": 1244396.0,
+      "percentage": 22.7
+    },
+    {
+      "type": "Chews",
+      "revenue": 44074463.08,
+      "units": 7810082.0,
+      "percentage": 16.9
+    },
+    {
+      "type": "Teabags",
+      "revenue": 17945604.31,
+      "units": 290158.0,
+      "percentage": 6.9
+    },
+    {
+      "type": "Choco-Evdy",
+      "revenue": 5264925.93,
+      "units": 98276.0,
+      "percentage": 2.0
+    },
+    {
+      "type": "Candy",
+      "revenue": 3804874.62,
+      "units": 80313.0,
+      "percentage": 1.5
+    },
+    {
+      "type": "InstBev",
+      "revenue": 3168503.01,
+      "units": 29616.0,
+      "percentage": 1.2
+    },
+    {
+      "type": "Grocery",
+      "revenue": 2750955.22,
+      "units": 29508.0,
+      "percentage": 1.1
+    },
+    {
+      "type": "Cooky-Evdy",
+      "revenue": 1882960.6199999999,
+      "units": 22779.0,
+      "percentage": 0.7
+    },
+    {
+      "type": "Choco-Gift",
+      "revenue": 783796.38,
+      "units": 1725.0,
+      "percentage": 0.3
+    }
+  ]
+}

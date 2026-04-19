@@ -70,23 +70,13 @@ const navigation: NavItem[] = [
   },
   {
     name: 'Demand Intelligence',
-    href: '/demand',
+    href: '/demand-intelligence',
     icon: <ChartIcon />,
-    children: [
-      { name: 'True Demand Analysis', href: '/demand/true-demand' },
-      { name: 'Promo Finder', href: '/demand/promo-finder' },
-      { name: 'Channels', href: '/demand/channels' },
-    ],
   },
   {
     name: 'Reorder Center',
     href: '/reorder',
     icon: <TargetIcon />,
-    children: [
-      { name: 'Alerts & Actions', href: '/reorder/alerts' },
-      { name: 'Draft POs', href: '/reorder/draft-pos' },
-      { name: 'Communications', href: '/reorder/communications' },
-    ],
   },
   {
     name: 'AI Agent',

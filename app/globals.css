@@ -5,6 +5,7 @@
   --pop-primary: #0080C8;
   --pop-primary-light: #4DA6E0;
   --pop-primary-dark: #005A91;
+  --pop-secondary: #4DA6E0;
   
   /* Neutrals */
   --neutral-50: #FAFAFA;
@@ -46,6 +47,7 @@
   --color-pop-primary: var(--pop-primary);
   --color-pop-primary-light: var(--pop-primary-light);
   --color-pop-primary-dark: var(--pop-primary-dark);
+  --color-pop-secondary: var(--pop-secondary);
   
   --color-neutral-50: var(--neutral-50);
   --color-neutral-100: var(--neutral-100);
@@ -183,4 +185,30 @@ button:focus {
 
 button:active {
   outline: none;
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 128, 200, 0.3);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 128, 200, 0.5);
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 128, 200, 0.3) rgba(0, 0, 0, 0.03);
 }
