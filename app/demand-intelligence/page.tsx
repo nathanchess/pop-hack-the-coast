@@ -82,17 +82,17 @@ export default function TrueDemandPage() {
   const columns: ColumnDef<DataPoint>[] = [
     {
       accessorKey: 'sku',
-      header: 'Item Number',
+      header: 'ITEMNMBR',
       cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
     },
     {
       accessorKey: 'warehouseLocation',
-      header: 'Warehouse',
+      header: 'Warehouse Location',
       cell: (info) => <span className="text-sm">{info.getValue() as string}</span>,
     },
     {
       accessorKey: 'predictedDemand',
-      header: 'Predicted Demand',
+      header: 'Predicted Demand (Item Count)',
       cell: (info) => (
         <span className="text-sm">
           {(info.getValue() as number).toLocaleString(undefined, { maximumFractionDigits: 0 })}
@@ -101,7 +101,7 @@ export default function TrueDemandPage() {
     },
     {
       accessorKey: 'currentInventory',
-      header: 'Current Inventory',
+      header: 'Current Inventory (Item Count)',
       cell: (info) => (
         <span className="text-sm">
           {(info.getValue() as number).toLocaleString(undefined, { maximumFractionDigits: 0 })}
@@ -110,7 +110,7 @@ export default function TrueDemandPage() {
     },
     {
       accessorKey: 'urgency',
-      header: 'Gap (Urgency)',
+      header: 'Current Gap (Item Count)',
       cell: (info) => (
         <span className="font-semibold text-warning">
           {(info.getValue() as number).toLocaleString(undefined, { maximumFractionDigits: 0 })}
@@ -119,7 +119,7 @@ export default function TrueDemandPage() {
     },
     {
       accessorKey: 'importance',
-      header: 'Value (Importance)',
+      header: 'Item Value',
       cell: (info) => (
         <span className="font-semibold text-pop-primary">
           {(info.getValue() as number).toFixed(3)}
@@ -660,7 +660,7 @@ export default function TrueDemandPage() {
       <ScrollFade delay={200}>
       <div className="glass-panel rounded-2xl p-6">
         <div className="mb-4">
-          <h2 className="text-lg font-semibold text-neutral-900 mb-4">AI Metadata Table</h2>
+          <h2 className="text-lg font-semibold text-neutral-900 mb-4">AI Metadata Table (ai_metadata_v2.csv)</h2>
           
           <div className="flex items-center gap-4 mb-4">
             <div className="flex-1">
