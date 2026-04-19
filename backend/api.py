@@ -2,6 +2,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import io
+import os
+import glob
 
 app = FastAPI()
 
@@ -17,45 +19,31 @@ store = {
     "purchase_orders": []
 }
 
-# @app.post("/upload/products")
-# async def upload_products(file: UploadFile = File(...)):
-#     contents = await file.read()
-#     df = pd.read_csv(io.BytesIO(contents))
-    
-#     store["graph_data"] = df[[
-#         "product", 
-#         "urgent", 
-#         "important"
-#         ]].to_dict(orient="records") # more on the way for data
-
-#     return {"message": "Products uploaded", "rows": len(df)}
-
-
 @app.post("/upload")
-async def upload_csv(file: UploadFile = File(...)): #something should be in this constructor
-    contents = await file.read()
-    df = pd.read_csv(io.BytesIO(contents))
+async def upload_csv():
+    try:
+        search_path = os.path.join(os.path.dirname(__file__), "output_csv/*.csv")
+        csv_files = glob.glob(search_path)
+        
+        if not csv_files:
+            return {"error": "No CSV files found in output_csv folder"}
+        
+        latest_file = max(csv_files, key=os.path.getmtime)
+        df = pd.read_csv(latest_file, on_bad_lines='skip')
+        
+        store["graph_data"] = df.to_dict(orient="records")
+        return store["graph_data"]  # returns data directly
     
-    store["graph_data"] = df[[
-        "LOCNCODE",
-        "ITEMNMBR",
-        "Predicted_Demand_30d",
-        "Current_Inventory",
-        "Current_Gap",
-        "Item_Value",
-        "Scaled_Value",
-        "Scaled_Gap",
-        "Aggregate_Metric"
-        ]].to_dict(orient="records")
-
-    return {"message": "CSV uploaded", "rows": len(df)}
+    except Exception as e:
+        traceback.print_exc()
+        return {"error": str(e)}
 
 
 @app.get("/graph-data")
-def get_graph_data():
+async def get_graph_data():
     return store["graph_data"]  
 
 
 @app.get("/purchase-orders")
-def get_purchase_orders():
+async def get_purchase_orders():
     return store["purchase_orders"]
